@@ -1,0 +1,21 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="zxx">
+
+
+@Html.Partial("~/Views/LayoutPartial/_HeaderPartial.cshtml")
+<body>
+    @Html.Partial("~/Views/LayoutPartial/_NavbarPartial.cshtml")
+
+    @RenderBody()
+
+    @Html.Partial("~/Views/LayoutPartial/_FooterPartial.cshtml")
+    @Html.Partial("~/Views/LayoutPartial/_ScriptsPartial.cshtml")
+
+</body>
+
+</html>
+
