@@ -17,7 +17,7 @@ namespace TraversalCoreProje.Models
             return new IdentityError()
             {
                 Code = "PasswordRequiresNonAlphanumeric",
-                Description = "Parola en az 1 sembol içermeli"
+                Description = "Parola en az 1 sembol içermeli('*'-'&')"
 
             };
         }
@@ -26,7 +26,7 @@ namespace TraversalCoreProje.Models
             return new IdentityError()
             {
                 Code = "PasswordRequiresLower",
-                Description = "Parola en az 1 tane küçük harf içermeli"
+                Description = "Parola en az 1 tane küçük harf içermeli('a'-'z')"
             };
         }
         public override IdentityError PasswordRequiresUpper()
@@ -34,7 +34,7 @@ namespace TraversalCoreProje.Models
             return new IdentityError()
             {
                 Code = "PasswordRequiresUpper",
-                Description = "Parola en az 1 tane büyük harf içermeli"
+                Description = "Parola en az 1 tane büyük harf içermeli('A'-'Z')"
             };
         }
         public override IdentityError PasswordRequiresDigit()
@@ -42,7 +42,7 @@ namespace TraversalCoreProje.Models
             return new IdentityError()
             {
                 Code = "PasswordRequiresDigit",
-                Description="Parola en az 1 adet rakam içermeli(0-9)"
+                Description="Parola en az 1 adet rakam içermeli('0'-'9')"
             };
         }
     }
