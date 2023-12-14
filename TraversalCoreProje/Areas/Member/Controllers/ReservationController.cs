@@ -24,6 +24,7 @@ namespace TraversalCoreProje.Areas.Member.Controllers
                                                Text = x.City,
                                                Value=x.DestinationID.ToString()
                                            }).ToList();
+            ViewBag.v=values;
             return View();
         }
 
