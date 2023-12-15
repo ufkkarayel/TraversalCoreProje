@@ -21,6 +21,10 @@ namespace TraversalCoreProje.Areas.Member.Controllers
         {
             return View();
         }
+        public IActionResult MyApprovalReservation()
+        {
+            return View();
+        }
 
 
         [HttpGet]
