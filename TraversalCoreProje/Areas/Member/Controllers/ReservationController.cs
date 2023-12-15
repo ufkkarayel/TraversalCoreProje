@@ -33,8 +33,8 @@ namespace TraversalCoreProje.Areas.Member.Controllers
         public async Task<IActionResult> MyApprovalReservation()
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            ViewBag.v = values.Id;
-            return View();
+          var valuesList=  reservationManager.GetListApprovalReservation(values.Id);
+            return View(valuesList);
         }
 
 
