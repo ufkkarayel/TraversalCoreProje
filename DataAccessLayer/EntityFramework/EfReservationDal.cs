@@ -11,5 +11,19 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfReservationDal : GenericRepository<Reservation>, IReservationDal
     {
+        public List<Reservation> GetListWithReservationByAccepted(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Reservation> GetListWithReservationByLast(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Reservation> GetListWithReservationByWaitApproval(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
