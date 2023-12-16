@@ -11,5 +11,7 @@ namespace BusinessLayer.Abstract
     {
         
         List<Reservation> GetListWithReservationByWaitApproval(int id);
+        List<Reservation> GetListWithReservationByLast(int id);
+        List<Reservation> GetListWithReservationByAccepted(int id);
     }
 }
