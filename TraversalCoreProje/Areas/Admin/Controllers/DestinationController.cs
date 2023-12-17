@@ -1,13 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalCoreProje.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class DestinationController : Controller
     {
-        [Area("Admin")]
+        DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
         public IActionResult Index()
         {
-            return View();
+            var values = destinationManager.TGetList();
+            return View(values);
         }
     }
 }
