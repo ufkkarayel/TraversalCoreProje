@@ -14,7 +14,7 @@
       data-assets-path="../assets/"
       data-template="vertical-menu-template-free">
 
-@*@await Component.InvokeAsync("_AdminDashboardHeader")*@
+@await Component.InvokeAsync("_AdminDashboardHeader")
 
 <body>
     <!-- Layout wrapper -->
@@ -29,12 +29,10 @@
         @await Component.InvokeAsync("_Cards2Statistics")
     </div>
     <div class="row">
+        @await Component.InvokeAsync("_DestinationStatistic")
+        @await Component.InvokeAsync("_DestinationStatistic2")
 
-        @*@await Component.InvokeAsync("_DestinationStatistic")*@
-
-        @*@await Component.InvokeAsync("_DestinationStatistic2")*@
-
-        @*@await Component.InvokeAsync("_AdminGuideList")*@
+        @await Component.InvokeAsync("_AdminGuideList")
         <!--/ Transactions -->
     </div>
     <div class="content-backdrop fade"></div>
@@ -43,23 +41,6 @@
     <!-- / Layout wrapper -->
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="~/sneat-1.0.0/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="~/sneat-1.0.0/assets/vendor/libs/popper/popper.js"></script>
-    <script src="~/sneat-1.0.0/assets/vendor/js/bootstrap.js"></script>
-    <script src="~/sneat-1.0.0/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-    <script src="~/sneat-1.0.0/assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-    <!-- Vendors JS -->
-    <script src="~/sneat-1.0.0/assets/vendor/libs/apex-charts/apexcharts.js"></script>
-
-    <!-- Main JS -->
-    <script src="~/sneat-1.0.0/assets/js/main.js"></script>
-
-    <!-- Page JS -->
-    <script src="~/sneat-1.0.0/assets/js/dashboards-analytics.js"></script>
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    @await Component.InvokeAsync("_AdminScripts")
 </body>
 </html>
