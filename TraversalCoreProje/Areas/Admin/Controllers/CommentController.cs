@@ -10,7 +10,7 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
         CommentManager commentManager = new CommentManager(new EfCommentDal());
         public IActionResult Index()
         {
-            var values=commentManager.TGetList();
+            var values=commentManager.GetListCommentWithDestination();
             return View(values);
         }
     }
