@@ -30,7 +30,7 @@ namespace BusinessLayer.Concrete
 
         public void TDelete(Comment t)
         {
-            throw new NotImplementedException();
+            _commentDal.Delete(t);
         }
 
         public Comment TGetByID(int id)
