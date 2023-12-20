@@ -37,6 +37,8 @@ namespace TraversalCoreProje
                 .AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
             services.AddScoped<ICommentService,CommentManager>();
             services.AddScoped<ICommentDal, EfCommentDal>();
+            services.AddScoped<IDestinationService, DestinationManager>();
+            services.AddScoped<IDestinationDal, EfDestinationDal>();
             services.AddControllersWithViews();
 
             services.AddMvc(config => { 
