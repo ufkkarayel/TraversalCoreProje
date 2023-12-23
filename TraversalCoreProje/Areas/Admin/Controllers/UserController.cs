@@ -18,5 +18,11 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
            var values=_appUserService.TGetList();
             return View(values);
         }
+        public IActionResult DeleteUser(int id)
+        {
+            var values=_appUserService.TGetByID(id);
+            _appUserService.TDelete(values);
+            return RedirectToAction("Index");
+        }
     }
 }
