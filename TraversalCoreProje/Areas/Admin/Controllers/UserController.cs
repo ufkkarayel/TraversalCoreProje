@@ -37,5 +37,14 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
             _appUserService.TUpdate(appUser);
             return RedirectToAction("Index");
         }
+        public IActionResult CommentUser(int id)
+        {
+            _appUserService.TGetList();
+            return View();
+        }
+        public IActionResult ReservationUser()
+        {
+            return View();
+        }
     }
 }
