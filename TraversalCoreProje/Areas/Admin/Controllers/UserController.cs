@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalCoreProje.Areas.Admin.Controllers
@@ -22,6 +23,18 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
         {
             var values=_appUserService.TGetByID(id);
             _appUserService.TDelete(values);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult EditUser(int id)
+        {
+            var values = _appUserService.TGetByID(id);
+            return View(values);
+        }
+        [HttpPost]
+        public IActionResult EditUser(AppUser appUser)
+        {
+            _appUserService.TUpdate(appUser);
             return RedirectToAction("Index");
         }
     }
