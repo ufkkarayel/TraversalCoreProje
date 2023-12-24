@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalCoreProje.Areas.Admin.Controllers
 {
+	[Area("Admin")]
 	public class GuideController : Controller
 	{
 		private readonly IGuideService _guideService;
