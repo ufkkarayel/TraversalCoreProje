@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalCoreProje.Areas.Admin.Controllers
@@ -17,6 +18,17 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
 		{
 			var  values= _guideService.TGetList();
 			return View(values);
+		}
+		[HttpGet]
+		public IActionResult AddGuide()
+		{
+			return View();
+		}
+		[HttpPost]
+		public IActionResult AddGuide(Guide guide) 
+		{
+			_guideService.TAdd(guide);
+			return RedirectToAction("Index");
 		}
 	}
 }
