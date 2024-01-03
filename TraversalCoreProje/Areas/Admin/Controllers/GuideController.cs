@@ -30,5 +30,17 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
 			_guideService.TAdd(guide);
 			return RedirectToAction("Index");
 		}
+		[HttpGet]
+		public ActionResult EditGuide(int id)
+		{
+			var values = _guideService.TGetByID(id);
+			return View(values);
+		}
+		[HttpPost]
+		public IActionResult EditGuide(Guide guide)
+		{
+			_guideService.TUpdate(guide);
+			return RedirectToAction("Index");
+		}
 	}
 }
