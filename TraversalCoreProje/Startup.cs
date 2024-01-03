@@ -37,6 +37,8 @@ namespace TraversalCoreProje
             services.AddLogging(x =>
             {
                 x.ClearProviders();
+                x.SetMinimumLevel(LogLevel.Debug);
+                x.AddDebug();
             });
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>()
