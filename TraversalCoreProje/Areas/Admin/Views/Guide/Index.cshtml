@@ -20,13 +20,26 @@
     </tr>
     @foreach (var item in Model)
     {
-        count++; 
+        count++;
         <tr>
             <td>@count</td>
-            <td><img src="@item.Image" alt="" style="width:50px; height:50px; border-radius:50%; margin:auto"  /></td>
+            <td><img src="@item.Image" alt="" style="width:50px; height:50px; border-radius:50%; margin:auto" /></td>
             <td>@item.Name</td>
             <td>@item.Description</td>
-            <td>@item.Status</td>
+
+            @{
+                if (item.Status == true)
+            {
+                    <td><a href="#" class="btn btn-warning">Pasif Yap</a></td>
+            }
+            else
+                {
+                    <td><a href="#" class="btn btn-info">Aktif Yap</a></td>
+                }
+            }
+
+
+
             <td><a href="#" class="btn btn-outline-success">Düzenle</a> </td>
 
         </tr>
@@ -35,3 +48,4 @@
 </table>
 
 <a href="#" class="btn btn-outline-primary">Yeni Rehber Girişi</a>
+
