@@ -11,6 +11,7 @@ namespace TraversalCoreProje.Controllers
 {
     public class HomeController : Controller
     {
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -20,7 +21,8 @@ namespace TraversalCoreProje.Controllers
 
         public IActionResult Index()
         {
-            _logger.LogInformation("Index sayfası çağrıldı...");
+            DateTime d= Convert.ToDateTime(DateTime.Now.ToLongDateString());
+            _logger.LogInformation(d + "Index sayfası çağrıldı...");
             return View();
         }
 
