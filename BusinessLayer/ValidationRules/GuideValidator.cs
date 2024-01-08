@@ -15,6 +15,7 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x=>x.Name).NotEmpty().WithMessage("Lütfen rehber adını giriniz");
             RuleFor(x=>x.Description).NotEmpty().WithMessage("Lütfen rehber açıklamasını giriniz");
             RuleFor(x=>x.Image).NotEmpty().WithMessage("Lütfen rehber görselini giriniz");
+            RuleFor(x => x.Name).MaximumLength(30).WithMessage("Lütfen 0 Karakterden kısa isim giriniz");
         }
     }
 }
