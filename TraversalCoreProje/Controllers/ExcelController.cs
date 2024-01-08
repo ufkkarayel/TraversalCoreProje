@@ -1,7 +1,9 @@
-﻿using DataAccessLayer.Concrete;
+﻿using ClosedXML.Excel;
+using DataAccessLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using TraversalCoreProje.Models;
 
@@ -11,22 +13,7 @@ namespace TraversalCoreProje.Controllers
     {
         public IActionResult Index()
         {
-            ExcelPackage excel= new ExcelPackage();
-            var workSheet = excel.Workbook.Worksheets.Add("Sayfa1");
-            workSheet.Cells[1,1].Value = "Rota";
-            workSheet.Cells[1,2].Value = "Rehber";
-            workSheet.Cells[1,3].Value = "Kontenjan";
-
-            workSheet.Cells[2, 1].Value = "Gürcistan Turu";
-            workSheet.Cells[2, 2].Value = "Kadir Yıldız";
-            workSheet.Cells[2, 3].Value = "50";
-
-            workSheet.Cells[3, 1].Value = "Balkan Turu";
-            workSheet.Cells[3, 2].Value = "Zeynep Öztürk";
-            workSheet.Cells[3, 3].Value = "30";
-
-            var bytes=excel.GetAsByteArray();
-            return File(bytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","dosya.xlsx");
+           return View();
             
         }
         public List<DestinationModel> DestinationList()
@@ -43,6 +30,52 @@ namespace TraversalCoreProje.Controllers
                 }).ToList();
             }
             return destinationModels;
+        }
+        public IActionResult StaticExcelReport()
+        {
+            ExcelPackage excel = new ExcelPackage();
+            var workSheet = excel.Workbook.Worksheets.Add("Sayfa1");
+            workSheet.Cells[1, 1].Value = "Rota";
+            workSheet.Cells[1, 2].Value = "Rehber";
+            workSheet.Cells[1, 3].Value = "Kontenjan";
+
+            workSheet.Cells[2, 1].Value = "Gürcistan Turu";
+            workSheet.Cells[2, 2].Value = "Kadir Yıldız";
+            workSheet.Cells[2, 3].Value = "50";
+
+            workSheet.Cells[3, 1].Value = "Balkan Turu";
+            workSheet.Cells[3, 2].Value = "Zeynep Öztürk";
+            workSheet.Cells[3, 3].Value = "30";
+
+            var bytes = excel.GetAsByteArray();
+            return File(bytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "dosya.xlsx");
+        }
+        public IActionResult DestinationExcelReport()
+        {
+            using (var workBook = new XLWorkbook())
+            {
+                var workSheet = workBook.Worksheets.Add("Tur Listesi");
+                workSheet.Cell(1, 1).Value = "Şehir";
+                workSheet.Cell(1, 2).Value = "Konaklama Süresi";
+                workSheet.Cell(1, 3).Value = "Fiyat";
+                workSheet.Cell(1, 4).Value = "Kapasite";
+
+                int rowCount = 2;
+                foreach (var item in DestinationList())
+                {
+                    workSheet.Cell(rowCount,1).Value = item.City;
+                    workSheet.Cell(rowCount, 2).Value=item.DayNight;
+                    workSheet.Cell(rowCount, 3).Value=item.Price;
+                    workSheet.Cell(rowCount,4).Value=item.Capacity;
+                    rowCount++;
+                }
+                using (var stream= new MemoryStream())
+                {
+                    workBook.SaveAs(stream);
+                    var content=stream.ToArray();
+                    return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "YeniListe.xlsx");
+                }
+            }
         }
        
     }
