@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataAccessLayer.Concrete;
+using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
+using System.Collections.Generic;
+using System.Linq;
+using TraversalCoreProje.Models;
 
 namespace TraversalCoreProje.Controllers
 {
@@ -25,5 +29,21 @@ namespace TraversalCoreProje.Controllers
             return File(bytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","dosya.xlsx");
             
         }
+        public List<DestinationModel> DestinationList()
+        {
+            List<DestinationModel> destinationModels = new List<DestinationModel>();
+            using (var c=new Context())
+            {
+                destinationModels = c.Destinations.Select(x => new DestinationModel
+                {
+                    City = x.City,
+                    Capacity = x.Capacity,
+                    DayNight = x.DayNight,
+                    Price=x.Price
+                }).ToList();
+            }
+            return destinationModels;
+        }
+       
     }
 }
