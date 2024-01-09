@@ -17,7 +17,11 @@ namespace TraversalCoreProje.Controllers
             var stream = new FileStream(path,FileMode.Create);
             Document document = new Document(PageSize.A4);
             PdfWriter.GetInstance(document, stream);
-
+            document.Open();
+            Paragraph paragraph = new Paragraph("Traversal Rezervasyon Pdf Raporu");
+            document.Add(paragraph);
+            document.Close();
+            return File("/PdfReports/dosya1.pdf", "application/pdf", "dosya1.pdf");
         }
     }
 }
