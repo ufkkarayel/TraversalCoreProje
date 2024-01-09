@@ -11,5 +11,14 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfGuideDal : GenericRepository<Guide>, IGuideDal
     {
+        public void ChangeToFalseByGuide(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ChangeToTrueByGuide(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
