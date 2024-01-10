@@ -12,9 +12,10 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfGuideDal : GenericRepository<Guide>, IGuideDal
     {
+        Context context = new Context();
         public void ChangeToFalseByGuide(int id)
         {
-            Context context = new Context();
+          
             var values = context.Guides.Find(id);
             values.Status = false;
             context.SaveChanges();
