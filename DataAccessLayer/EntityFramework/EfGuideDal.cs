@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Repository;
 using EntityLayer.Concrete;
 using System;
@@ -13,7 +14,10 @@ namespace DataAccessLayer.EntityFramework
     {
         public void ChangeToFalseByGuide(int id)
         {
-            throw new NotImplementedException();
+            Context context = new Context();
+            var values = context.Guides.Find(id);
+            values.Status = false;
+            context.SaveChanges();
         }
 
         public void ChangeToTrueByGuide(int id)
