@@ -23,7 +23,9 @@ namespace DataAccessLayer.EntityFramework
 
         public void ChangeToTrueByGuide(int id)
         {
-            throw new NotImplementedException();
+            var values = context.Guides.Find(id);
+            values.Status = true;
+            context.SaveChanges();
         }
     }
 }
