@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TraversalCoreProje.Models;
 
 namespace TraversalCoreProje.Areas.Admin.Controllers
 {
@@ -10,8 +11,9 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index()
+        public IActionResult Index(MailRequest mailRequest)
         {
+
             return View();
         }
     }
