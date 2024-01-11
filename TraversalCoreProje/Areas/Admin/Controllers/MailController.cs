@@ -30,7 +30,7 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
 
             SmtpClient smtpClient = new SmtpClient();
             smtpClient.Connect("smtp.gmail.com", 587, false);
-            smtpClient.Authenticate(mailRequest.SenderMail, "123456aA-");
+            smtpClient.Authenticate("traversalcore2@gmail.com", "123456aA-");
             smtpClient.Send(mimeMessage);
             smtpClient.Disconnect(true);
 
