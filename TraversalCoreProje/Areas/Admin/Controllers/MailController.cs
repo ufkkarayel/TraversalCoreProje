@@ -6,6 +6,7 @@ using TraversalCoreProje.Models;
 
 namespace TraversalCoreProje.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class MailController : Controller
     {
         [HttpGet]
