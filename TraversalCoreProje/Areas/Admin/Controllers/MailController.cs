@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Mvc;
 using MimeKit;
+
 using TraversalCoreProje.Models;
 
 namespace TraversalCoreProje.Areas.Admin.Controllers
@@ -22,6 +24,11 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
 
             mimeMessage.Subject= mailRequest.Subject;
             
+
+            SmtpClient smtpClient = new SmtpClient();
+            smtpClient.Connect("smtp.gmail.com", 587, false);
+            smtpClient.Send(mimeMessage);
+            smtpClient.Disconnect(true);
 
             return View();
         }
