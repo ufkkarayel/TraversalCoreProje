@@ -26,6 +26,10 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
             MailboxAddress mailboxAddressTo= new MailboxAddress("User",mailRequest.RecieverMail);
             mimeMessage.To.Add(mailboxAddressTo);
 
+            var bodyBuilder = new BodyBuilder();
+            bodyBuilder.TextBody= mailRequest.Body;
+            mimeMessage.Body=bodyBuilder.ToMessageBody();
+
             mimeMessage.Subject= mailRequest.Subject;
             
 
