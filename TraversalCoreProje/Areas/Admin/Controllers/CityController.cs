@@ -29,12 +29,20 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
             return Json(jsonCity);
         }
 
+        [HttpPost]
         public IActionResult AddCityDestination(Destination destination)
         {
             destination.Status = true;
             _destinationService.TAdd(destination);
            var values = JsonConvert.SerializeObject(destination);
-            return Json(destination);
+            return Json(values);
+        }
+
+        public IActionResult GetById(int id)
+        {
+            var values = _destinationService.TGetByID(id);
+            var jsonvalues=JsonConvert.SerializeObject(values);
+            return Json(jsonvalues);
         }
 
     }

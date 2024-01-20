@@ -19,6 +19,18 @@
 <div id="citylist">
 </div>
 
+<div>
+    <input type="text" id="txtcity" placeholder="Şehir adını giriniz" class="form-control" />
+    <br />
+    <input type="text" id="txtdaynight" placeholder="Gün gece sayısı giriniz" class="form-control" />
+    <br />
+    <input type="text" id="txtprice" placeholder="Fiyat giriniz" class="form-control" />
+    <br />
+    <input type="text" id="txtcapacity" placeholder="Kapasite giriniz" class="form-control" />
+    <br />
+</div>
+
+
 <script>
     $("#btngetlist").click(function () {
         $.ajax({
@@ -41,12 +53,22 @@
 
     $("#btnaddcity").click(function () {
         let cityvalues = {
-            City:$("#txtcity").val(),
-            DayNight:$("#txtdaynight").val(),
+            City: $("#txtcity").val(),
+            DayNight: $("#txtdaynight").val(),
             Price: $("#txtprice").val(),
-            Capacity:$("#txtcapacity")
-        }
-    })
+            Capacity: $("#txtcapacity").val()
+        };
+
+        $.ajax({
+            type: "post",
+            url: "/Admin/City/AddCityDestination/",
+            data: cityvalues,
+            success: function (func) {
+                let result = jQuery.parseJSON(func);
+                alert("Şehir - Rota Başarılı Bir Şekilde Eklendi");
+            }
+        });
+    });
 
 </script>
 
