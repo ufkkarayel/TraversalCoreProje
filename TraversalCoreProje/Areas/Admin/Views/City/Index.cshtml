@@ -29,9 +29,9 @@
             success: function (func) {
                 let w = jQuery.parseJSON(func);
                 console.log(w);
-                let tablehtml = "<table class=table table-bordered> <tr><th> Şehir Adı </th> <th> Gün-Gece </th> <th> Ülke </th> </tr>";
+                let tablehtml = "<table class=table table-bordered> <tr><th> Şehir Adı </th> <th> Gün-Gece </th> <th> Fiyatı </th> </tr>";
                 $.each(w, (index, value) => {
-                    tablehtml += `<tr><td>${value.CityID}</td> <td>${value.CityName}</td> <td> ${value.CityCountry}  </td> </tr>`
+                    tablehtml += `<tr><td>${value.City}</td> <td>${value.DayNight}</td> <td> ${value.Price} ₺ </td> </tr>`
                 });
                 tablehtml += "</table>";
                 $("#citylist").html(tablehtml);

@@ -24,7 +24,7 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
 
         public IActionResult CityList()
         {
-            var jsonCity = JsonConvert.SerializeObject(cities);
+            var jsonCity = JsonConvert.SerializeObject(_destinationService.TGetList());
             return Json(jsonCity);
         }
 
