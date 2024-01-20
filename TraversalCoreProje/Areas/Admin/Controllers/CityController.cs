@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using TraversalCoreProje.Models;
 
@@ -12,6 +13,14 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public IActionResult CityLisy()
+        {
+            var jsonCity = JsonConvert.SerializeObject(cities);
+            return Json(jsonCity);
+        }
+
+
         public static List<CityClass> cities = new List<CityClass>()
         {
             new CityClass()
