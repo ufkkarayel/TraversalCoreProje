@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Office2010.ExcelAc;
+﻿using BusinessLayer.Abstract;
+using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -9,6 +10,13 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
     [Area("Admin")]
     public class CityController : Controller
     {
+        private readonly IDestinationService _destinationService;
+
+        public CityController(IDestinationService destinationService)
+        {
+            _destinationService = destinationService;
+        }
+
         public IActionResult Index()
         {
             return View();
