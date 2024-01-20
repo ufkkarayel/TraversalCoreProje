@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DocumentFormat.OpenXml.Office2010.ExcelAc;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -28,27 +29,12 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
             return Json(jsonCity);
         }
 
-
-        public static List<CityClass> cities = new List<CityClass>
+        public IActionResult AddCityDestination(Destination destination)
         {
-            new CityClass
-            {
-                CityID=1,
-                CityName="Üsküp",
-                CityCountry="Makedonya"
-            },
-            new CityClass
-            {
-                CityID=2,
-                CityName="Roma",
-                CityCountry="İtalya"
-            },
-            new CityClass
-            {
-                CityID=3,
-                CityName="Londra",
-                CityCountry="İngiltere"
-            }
-        };
+            _destinationService.TAdd(destination);
+           var values = JsonConvert.SerializeObject(destination);
+            return Json(destination);
+        }
+
     }
 }
