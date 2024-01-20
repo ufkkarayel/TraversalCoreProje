@@ -25,13 +25,13 @@
             contentType: "application/json",
             dataType: "json",
             type: "Get",
-            url: "/Admin/City/CityList",
+            url: "/Admin/City/CityList/",
             success: function (func) {
                 let w = jQuery.parseJSON(func);
                 console.log(w);
-                let tablehtml = "<table class=table table-bordered> <tr><th> ŞehirID </th><th>Şehir Adı</th> <th>Ülke Adı</th></tr>";
+                let tablehtml = "<table class=table table-bordered> <tr><th> Şehir Adı </th> <th> Gün-Gece </th> <th> Ülke </th> </tr>";
                 $.each(w, (index, value) => {
-                    tablehtml += `<tr><td>${value.CityID}</td> <td>${value.CityName}</td> <td>${value.CityCountry}</td></tr>`
+                    tablehtml += `<tr><td>${value.CityID}</td> <td>${value.CityName}</td> <td> ${value.CityCountry}  </td> </tr>`
                 });
                 tablehtml += "</table>";
                 $("#citylist").html(tablehtml);

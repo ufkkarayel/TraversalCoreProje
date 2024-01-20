@@ -14,33 +14,32 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult CityLisy()
+        public IActionResult CityList()
         {
             var jsonCity = JsonConvert.SerializeObject(cities);
             return Json(jsonCity);
         }
 
 
-        public static List<CityClass> cities = new List<CityClass>()
+        public static List<CityClass> cities = new List<CityClass>
         {
-            new CityClass()
+            new CityClass
             {
-                CityID = 1,
-                CityName = "Kayseri",
-                CityCountry="Türkiye"
+                CityID=1,
+                CityName="Üsküp",
+                CityCountry="Makedonya"
             },
-            new CityClass()
+            new CityClass
             {
-                CityID= 2,
-                CityCountry="İngiltere",
-                CityName="Londra"
-
-            },
-            new CityClass()
-            {
-                CityID=3,
+                CityID=2,
                 CityName="Roma",
                 CityCountry="İtalya"
+            },
+            new CityClass
+            {
+                CityID=3,
+                CityName="Londra",
+                CityCountry="İngiltere"
             }
         };
     }
