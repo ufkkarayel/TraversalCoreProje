@@ -54,7 +54,7 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
 
         public IActionResult UpdateCity(Destination destination)
         {
-            var values = _destinationService.TGetByID(destination.DestinationID);
+            
             _destinationService.TUpdate(destination);
             var v=JsonConvert.SerializeObject(destination);
             return Json(v);

@@ -133,15 +133,14 @@
 
     $("#btnupdatecity").click(function () {
         let values = {
-            DestinationID: $("#txtcityeditid").val();
-            City: $("#txtcityname").val();
-            DayNight: $("#txtcitydaynight").val();
-
+            DestinationID: $("#txtcityeditid").val(),
+            City: $("#txtcityname").val(),
+            DayNight: $("#txtcitdaynightname").val()
         };
 
         $.ajax({
             type: "post",
-            url: "/Admin/City/UpdateCity",
+            url: "/Admin/City/UpdateCity/",
             data: values,
             success: function (fun4) {
                 alert("Güncelleme işlemi yapıldı");
