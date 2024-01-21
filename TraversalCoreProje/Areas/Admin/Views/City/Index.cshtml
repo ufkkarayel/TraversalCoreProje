@@ -30,6 +30,17 @@
 
 </div>
 <br />
+<br />
+<div>
+
+    <input type="text" id="txtcityeditid" placeholder="Güncellenecek ID değerini giriniz" class="form-control" />
+    <br />
+    <input type="text" id="txtcityname" placeholder="Güncellenecek şehir adını giriniz" class="form-control" />
+    <br />
+    <input type="text" id="txtcitydaynight" placeholder="Güncellenecek gün gece bilgisini giriniz" class="form-control" />
+</div>
+
+<br />
 <div id="destinationlistbyid">
 
 </div>
@@ -115,6 +126,25 @@
             dataType: "json",
             success: function (fun3) {
                 loadData();
+                alert("Şehir bilgisi silindi");
+            }
+        });
+    });
+
+    $("#btnupdatecity").click(function () {
+        let values = {
+            DestinationID: $("#txtcityeditid").val();
+            City: $("#txtcityname").val();
+            DayNight: $("#txtcitydaynight").val();
+
+        };
+
+        $.ajax({
+            type: "post",
+            url: "/Admin/City/UpdateCity",
+            data: values,
+            success: function (fun4) {
+                alert("Güncelleme işlemi yapıldı");
             }
         });
     });
