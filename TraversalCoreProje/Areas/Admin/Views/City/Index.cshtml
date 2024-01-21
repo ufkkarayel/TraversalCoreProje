@@ -24,6 +24,12 @@
 
 </div>
 <br />
+<br />
+<div>
+    <input type="text" id="txtcityid" placeholder="Silinecek ID değerini giriniz" class="form-control" />
+
+</div>
+<br />
 <div id="destinationlistbyid">
 
 </div>
@@ -96,6 +102,19 @@
                 console.log(result);
                 let htmlstr = `<table class=table table-bordered><tr><th>Şehir Adı</th><th>Gün-Gece</th><th>Fiyatı</th></tr><tr><td>${result.City}</td><td>${result.DayNight}</td><td>${result.Capacity}</td></tr></table>`;
                 $("#destinationlistbyid").html(htmlstr);
+            }
+        });
+    });
+
+    $("#btndeletecity").click(x => {
+        let id = $("#txtcityid").val();
+        $.ajax({
+            url: "/Admin/City/DeleteCity/" + id,
+            type: "post",
+            contentType: "apllication/json",
+            dataType: "json",
+            success: function (fun3) {
+                loadData();
             }
         });
     });
